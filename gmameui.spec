@@ -14,6 +14,7 @@ BuildRequires:	libglade2-devel
 BuildRequires:	gtk+2-devel
 BuildRequires:	vte-devel
 BuildRequires:	expat-devel
+BuildRequires:	intltool
 BuildRequires:	libarchive-devel
 BuildRequires:	desktop-file-utils
 BuildRoot:	%{_tmppath}/%{name}-%{version}
