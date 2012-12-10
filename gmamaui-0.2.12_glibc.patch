@@ -1,0 +1,33 @@
+diff -up src/gmameui.c.fix src/gmameui.c
+--- src/gmameui.c.fix
++++ src/gmameui.c	
+@@ -31,9 +31,7 @@
+ #include <locale.h>
+ #include <unistd.h>
+ #include <signal.h>
+-#include <glib/gprintf.h>
+-#include <glib/gutils.h>
+-#include <glib/gstdio.h>	/* For g_mkdir */
++#include <glib.h>
+ #include <gtk/gtkmain.h>
+ #include <gtk/gtkfilesel.h>
+
+diff -up src/gmameui-zip-utils.c.fix2 src/gmameui-zip-utils.c
+--- src/gmameui-zip-utils.c.fix2	
++++ src/gmameui-zip-utils.c	
+@@ -91,7 +91,7 @@ read_pixbuf_from_zip_file (gchar *zipfil
+ 			buffer_data = (gchar *) g_malloc0 (filesize);
+ 			
+ 			/* Read the zipped pixbuf into memory */
+-			archive_read_data_into_buffer (zipfile, buffer_data, filesize);
++			archive_read_data (zipfile, buffer_data, filesize);
+ 			
+ 			pixbuf = load_pixbuf_data (buffer_data, filesize);
+ 									 
+@@ -107,4 +107,4 @@ read_pixbuf_from_zip_file (gchar *zipfil
+ 	
+ 	return pixbuf;
+ 	
+-}
+\ No newline at end of file
++}

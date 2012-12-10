@@ -1,23 +1,23 @@
-Name:			gmameui
-Version:		0.2.12
-Release:		%mkrel 2
+Name:		gmameui
+Version:	0.2.12
+Release:	3
 
 Summary:	A sdlmame front-end
 License:	GPLv3+
 Group:		Emulators
 URL:		http://gmameui.sourceforge.net/
 Source0:	%{name}-%{version}.tar.gz
-
-BuildRequires:	libgnome2-devel
-BuildRequires:	gnome-doc-utils
-BuildRequires:	libglade2-devel
-BuildRequires:	gtk+2-devel
-BuildRequires:	vte-devel
-BuildRequires:	expat-devel
+Patch0:		gmamaui-0.2.12_glibc.patch
+BuildRequires:	pkgconfig(libgnome-2.0)
+BuildRequires:	pkgconfig(gnome-doc-utils)
+BuildRequires:	pkgconfig(libglade-2.0)
+BuildRequires:	pkgconfig(gtk+-2.0)
+BuildRequires:	pkgconfig(vte)
+BuildRequires:	pkgconfig(expat)
 BuildRequires:	intltool
-BuildRequires:	libarchive-devel
+BuildRequires:	pkgconfig(libarchive)
 BuildRequires:	desktop-file-utils
-BuildRoot:	%{_tmppath}/%{name}-%{version}
+BuildRequires:	scrollkeeper
 
 %description
 GMAMEUI is a fork of the defunct GXMame project.
@@ -32,13 +32,13 @@ It contains a number of enhancements over GXMame:
 
 %prep
 %setup -q
+%patch0 -p0
 
 %build
 %configure2_5x
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 
 desktop-file-install --vendor="" \
@@ -48,19 +48,13 @@ desktop-file-install --vendor="" \
   --dir %{buildroot}%{_datadir}/applications/ \
   %{buildroot}%{_datadir}/applications/*
 
-%find_lang %{name}
+%find_lang %{name} --with-gnome
 
 %files -f %{name}.lang
-%defattr(-,root,root)
 %doc ChangeLog
 %{_bindir}/%{name}
 %{_datadir}/%{name}
-%{_datadir}/gnome/help/%{name}
-%{_datadir}/omf/%{name}/%{name}-C.omf
 %{_datadir}/pixmaps/%{name}.png
 %{_datadir}/applications/%{name}.desktop
 %{_mandir}/man6/%{name}.6*
-
-%clean
-rm -rf %{buildroot}
 
