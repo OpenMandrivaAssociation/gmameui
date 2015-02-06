@@ -1,6 +1,6 @@
 Name:		gmameui
 Version:	0.2.12
-Release:	3
+Release:	4
 
 Summary:	A sdlmame front-end
 License:	GPLv3+
