@@ -5,7 +5,7 @@ Release:	4
 Summary:	A sdlmame front-end
 License:	GPLv3+
 Group:		Emulators
-URL:		http://gmameui.sourceforge.net/
+URL:		https://gmameui.sourceforge.net/
 Source0:	%{name}-%{version}.tar.gz
 Patch0:		gmamaui-0.2.12_glibc.patch
 BuildRequires:	pkgconfig(libgnome-2.0)
