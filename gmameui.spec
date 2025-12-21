@@ -8,6 +8,11 @@ Group:		Emulators
 URL:		https://gmameui.sourceforge.net/
 Source0:	%{name}-%{version}.tar.gz
 Patch0:		gmamaui-0.2.12_glibc.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	pkgconfig(libgnome-2.0)
 BuildRequires:	pkgconfig(gnome-doc-utils)
 BuildRequires:	pkgconfig(libglade-2.0)
